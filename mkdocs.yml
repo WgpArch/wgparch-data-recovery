@@ -1,0 +1,16 @@
+site_name: wgparch Data Recovery
+site_url: https://wgparch.codeberg.page/wgparch-data-recovery/
+site_description: Corrupted and broken file repair service for South Africa
+theme:
+  name: material
+  palette:
+    primary: amber
+    accent: deep orange
+  features:
+    - navigation.tabs
+nav:
+  - Home: index.md
+  - How It Works: how-it-works.md
+  - File Types: file-types.md
+  - Pricing: pricing.md
+  - Contact: contact.md
