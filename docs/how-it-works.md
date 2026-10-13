@@ -2,7 +2,7 @@
 
 ## Step 1 — Submit Your File
 
-Upload your corrupted file via our [contact page](contact/).  
+Upload your corrupted file via our [contact page](contact.md).  
 Include your name, email, and a brief description of what happened  
 (e.g. "file won't open", "download was interrupted", "SD card error").
 

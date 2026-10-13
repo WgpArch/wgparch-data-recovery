@@ -24,7 +24,7 @@ We repair **corrupted and broken files** — not hard drives, not physical media
 
 ## Quick Start
 
-1. **Upload your file** via our [contact page](contact/)
+1. **Upload your file** via our [contact page](contact.md)
 2. **Pay R25** analysis fee (non-refundable)
 3. We analyze and report back what's recoverable
 4. **If repairable — pay R100** and receive your repaired file
