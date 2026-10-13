@@ -9,23 +9,33 @@ Payment is by EFT/bank transfer to a South African bank account.
 
 ## How To Submit Your File
 
-1. Fill in the upload form below (or email us)
-2. You will receive a **reference number** by email
-3. Pay the R25 analysis fee using your reference number
-4. We analyze and respond within 24-48 hours
+### Step 1 - Fill in the form
+
+**[Click here to open the submission form](https://docs.google.com/forms/d/e/1FAIpQLSezxqhKH-Bj-3yrkjHlaXu3Qlsp9IOdKaWJFZ9BMw0ZO7tRSQ/viewform?usp=publish-editor)**
+
+Provide your name, email, file type, and a brief description of the problem.
+
+### Step 2 - Send your file
+
+- **Small files (under 25MB):** Email as attachment to **wfhmwgp@gmail.com**
+- **Large files (over 25MB):** Use [WeTransfer](https://wetransfer.com) (free, no account needed, up to 2GB). Send to **wfhmwgp@gmail.com**
+
+### Step 3 - Pay the analysis fee
+
+You will receive a reference number by email. Pay R25 using that reference:
+
+- **Bank:** GoTyme Bank
+- **Account:** 51099967550
+- **Reference:** Your reference number (e.g. WGP-2610-003)
+- **Amount:** R25.00
 
 ---
 
-## Upload Form
+## Receiving Your Repaired File
 
-**[Click here to upload your file](https://docs.google.com/forms/d/e/1FAIpQLSezxqhKH-Bj-3yrkjHlaXu3Qlsp9IOdKaWJFZ9BMw0ZO7tRSQ/viewform?usp=publish-editor)**
-
-The form will ask for:
-
-- Your name
-- Your email address
-- The corrupted file (upload)
-- Brief description of what happened
+- Small files will be emailed back to you as an attachment
+- Large files will be sent as a **Google Drive download link**
+- Links expire after 7 days - please download promptly
 
 ---
 
@@ -33,20 +43,11 @@ The form will ask for:
 
 **wfhmwgp@gmail.com**
 
-Email us directly if:
+Email us if:
 
-- Your file is larger than 100MB
 - You have questions before submitting
 - You need batch pricing for multiple files
-
----
-
-## Payment Details
-
-- **Bank:** GoTyme Bank
-- **Account:** 51099967550
-- **Reference:** The reference number you receive after uploading
-- **Amount:** R25.00 (analysis fee)
+- You prefer to handle everything by email (no form needed)
 
 ---
 
