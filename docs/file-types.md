@@ -72,3 +72,17 @@ weddings, birthdays, once-in-a-lifetime moments. We will always try.
 !!! info "Planning for the future"
     Physical drive recovery and forensic services are planned once we
     acquire the necessary equipment. Watch this space.
+
+
+---
+
+## Important: What You Need To Send Us
+
+For us to repair your file, **you must be able to send us the file** — even if it's corrupted and won't open on your device.
+
+If you cannot copy, attach, or upload the file at all (because the device is failing, the file is completely inaccessible, or the drive is making strange noises), that requires **physical data recovery** — a different service that we do not yet offer.
+
+!!! info "Physical data recovery coming soon"
+    We are planning to offer physical drive recovery and forensic services
+    in the future once we acquire the necessary equipment.
+    If you need this now, contact us and we can recommend a specialist.
