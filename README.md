@@ -3,6 +3,7 @@
 <div align="center">
 
 [![View Website](https://img.shields.io/badge/View-Website-blue?style=for-the-badge)](https://WgpArch.github.io/wgparch-data-recovery/)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-support-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/wgparch)
 
 <img src="https://img.shields.io/badge/South_Africa-Only-green?style=for-the-badge" alt="South Africa Only">
 <img src="https://img.shields.io/badge/Service-File_Repair-amber?style=for-the-badge" alt="File Repair">
