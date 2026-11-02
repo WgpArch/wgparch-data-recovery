@@ -443,11 +443,12 @@
                         <li><strong>Service Area:</strong> South Africa only</li>
                         <li><strong>Payment:</strong> EFT to GoTyme Bank account</li>
                         <li>
-                            <strong>File Size:</strong>
+                            <strong>How to Send Files:</strong>
                             <ul class="nested-list">
-                                <li>Under 25MB: Email as attachment</li>
-                                <li>Over 25MB: Use Google Drive, Dropbox, or similar</li>
+                                <li>Small files: Email directly to wfhmwgp@gmail.com</li>
+                                <li>Large files: Upload to Google Drive/Dropbox & paste link in form</li>
                             </ul>
+                        </li>
                         </li>
                         <li><strong>Turnaround:</strong> 24-48 hours (Mon-Fri)</li>
                         <li>
@@ -467,7 +468,7 @@
                 </div>
                 
                 <div class="form-container">
-                    <form action="https://formspree.io/f/xwllwqkl" method="POST" enctype="multipart/form-data" class="contact-form">
+                    <form action="https://formspree.io/f/xwllwqkl" method="POST" class="contact-form">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required placeholder="Your full name">
@@ -496,15 +497,9 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="file-upload">Upload File (Max 10MB)</label>
-                            <input type="file" id="file-upload" name="attachment" accept=".jpg,.jpeg,.png,.webp,.gif,.mp4,.avi,.mkv,.mov,.mp3,.wav,.flac,.aac,.pdf,.docx,.xlsx,.odt,.zip,.rar,.7z">
-                            <small>For files larger than 10MB, provide a download link below instead</small>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="download-link">Download Link (for large files)</label>
-                            <input type="url" id="download-link" name="download_link" placeholder="Google Drive, Dropbox, or other sharing link">
-                            <small>If your file is over 10MB, upload it to Google Drive/Dropbox and paste the shareable link here</small>
+                            <label for="download-link">File Download Link (Google Drive, Dropbox, etc.)</label>
+                            <input type="url" id="download-link" name="download_link" placeholder="Paste your Google Drive or Dropbox share link here">
+                            <small>Upload your file to Google Drive/Dropbox first, then paste the shareable link here. For small files, you can also email directly to wfhmwgp@gmail.com</small>
                         </div>
                         
                         <div class="form-group checkbox-group">
