@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional forensic file repair and recovery service in South Africa. Recover corrupted photos, videos, music, and documents using advanced Linux tools. No Fix, No Fee Guarantee.">
+    <title>WgpArch - Forensic File Repair & Recovery | South Africa</title>
+    <style>
+        :root {
+            --color-primary: #1793d1;
+            --color-primary-dark: #0f6fa0;
+            --color-secondary: #2ecc71;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: rgba(20, 20, 20, 0.85);
+            --bg-card: rgba(30, 30, 30, 0.7);
+            --bg-input: rgba(40, 40, 40, 0.6);
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-md); }
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; margin-bottom: var(--spacing-sm); }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        p { margin-bottom: var(--spacing-sm); color: var(--text-secondary); }
+        a { color: var(--color-primary); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--color-secondary); }
+
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; flex-direction: column; }
+        .logo-main { font-size: 1.5rem; font-weight: 700; color: var(--color-primary); letter-spacing: 1px; }
+        .logo-sub { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+        .nav-links { display: flex; list-style: none; gap: var(--spacing-md); align-items: center; }
+        .nav-links a { color: var(--text-primary); font-weight: 500; }
+        .nav-links a:hover { color: var(--color-primary); }
+        .btn-nav {
+            background: var(--color-primary); color: white !important;
+            padding: 0.5rem 1.5rem; border-radius: var(--radius-md);
+        }
+
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(20, 20, 20, 0.9) 100%);
+        }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); align-items: center; }
+        .hero-text h1 {
+            font-size: 3rem; margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: var(--spacing-md); }
+        .trust-badge {
+            display: inline-flex; align-items: center; gap: var(--spacing-xs);
+            background: rgba(46, 204, 113, 0.15); border: 1px solid var(--color-secondary);
+            padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md); color: var(--color-secondary); font-weight: 600;
+        }
+        .hero-buttons { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
+        .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); }
+        .stat-card {
+            background: var(--bg-card); backdrop-filter: blur(10px);
+            padding: var(--spacing-md); border-radius: var(--radius-lg);
+            text-align: center; border: 1px solid var(--border-color);
+        }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: var(--spacing-xs); }
+        .stat-label { color: var(--text-secondary); font-size: 0.9rem; }
+
+        .btn {
+            display: inline-block; padding: 0.75rem 2rem; border-radius: var(--radius-md);
+            font-weight: 600; text-align: center; transition: all 0.3s ease;
+            border: none; cursor: pointer; font-size: 1rem;
+        }
+        .btn-primary { background: var(--color-primary); color: white; }
+        .btn-primary:hover { background: var(--color-primary-dark); transform: translateY(-2px); }
+        .btn-secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border-color); }
+
+        section { padding: var(--spacing-xl) 0; }
+        .section-title { text-align: center; margin-bottom: var(--spacing-xl); font-size: 2.5rem; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md); }
+        .service-card {
+            background: var(--bg-card); backdrop-filter: blur(10px);
+            padding: var(--spacing-md); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color); text-align: center;
+        }
+        .service-icon { font-size: 3rem; margin-bottom: var(--spacing-sm); }
+        .file-types { list-style: none; display: flex; flex-wrap: wrap; gap: var(--spacing-xs); justify-content: center; margin-top: var(--spacing-sm); }
+        .file-types li {
+            background: rgba(23, 147, 209, 0.15); padding: 0.25rem 0.75rem;
+            border-radius: 4px; font-size: 0.85rem; color: var(--color-primary);
+        }
+
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md); }
+        .step {
+            background: var(--bg-card); backdrop-filter: blur(10px);
+            padding: var(--spacing-md); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color); text-align: center;
+        }
+        .step-number {
+            width: 60px; height: 60px; background: var(--color-primary); color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: 700; margin: 0 auto var(--spacing-sm);
+        }
+
+        .pricing-card {
+            max-width: 600px; margin: 0 auto; background: var(--bg-card);
+            backdrop-filter: blur(10px); border-radius: var(--radius-lg);
+            border: 2px solid var(--color-primary); overflow: hidden;
+        }
+        .pricing-header { background: var(--color-primary); color: white; padding: var(--spacing-md); text-align: center; }
+        .pricing-breakdown { padding: var(--spacing-md); }
+        .price-item { display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) 0; }
+        .price-label { font-weight: 600; }
+        .price-amount { font-size: 1.5rem; font-weight: 700; color: var(--color-primary); }
+        .price-note { font-size: 0.85rem; color: var(--text-muted); }
+        .price-divider { height: 1px; background: var(--border-color); margin: var(--spacing-xs) 0; }
+        .price-item.total { margin-top: var(--spacing-sm); padding-top: var(--spacing-sm); border-top: 2px solid var(--color-primary); }
+        .price-item.total .price-amount { font-size: 2rem; color: var(--color-secondary); }
+        .guarantee-box {
+            background: rgba(46, 204, 113, 0.1); border-left: 4px solid var(--color-secondary);
+            padding: var(--spacing-md); margin: var(--spacing-md); display: flex; gap: var(--spacing-sm); align-items: start;
+        }
+
+        .about-content { display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-xl); }
+        .lead { font-size: 1.2rem; color: var(--text-primary); margin-bottom: var(--spacing-md); }
+        .credentials { display: grid; gap: var(--spacing-md); }
+        .credential { display: flex; gap: var(--spacing-sm); align-items: start; }
+        .credential-icon { font-size: 2rem; }
+        .tech-stack {
+            background: var(--bg-card); backdrop-filter: blur(10px);
+            padding: var(--spacing-md); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+        .tech-stack ul { list-style: none; margin-bottom: var(--spacing-sm); }
+        .tech-stack li { padding: var(--spacing-xs) 0; color: var(--text-secondary); }
+
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 2fr; gap: var(--spacing-xl); }
+        .form-info h3 { margin-bottom: var(--spacing-md); color: var(--color-primary); }
+        .info-list { list-style: none; margin-bottom: var(--spacing-md); }
+        .info-list > li { padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--border-color); }
+        .nested-list { list-style: disc; margin-left: var(--spacing-md); margin-top: var(--spacing-xs); }
+        .nested-list li { padding: var(--spacing-xs) 0; color: var(--text-secondary); }
+        .contact-methods {
+            background: var(--bg-card); backdrop-filter: blur(10px);
+            padding: var(--spacing-md); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+        .form-container {
+            background: var(--bg-card); backdrop-filter: blur(10px);
+            padding: var(--spacing-md); border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+        .contact-form { display: flex; flex-direction: column; gap: var(--spacing-md); }
+        .form-group { display: flex; flex-direction: column; gap: var(--spacing-xs); }
+        .form-group label { font-weight: 600; color: var(--text-primary); }
+        .form-group input, .form-group select, .form-group textarea {
+            background: var(--bg-input); border: 1px solid var(--border-color);
+            padding: 0.75rem; border-radius: var(--radius-md); color: var(--text-primary);
+            font-size: 1rem;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--color-primary);
+        }
+        .form-group small { color: var(--text-muted); font-size: 0.85rem; }
+        .checkbox-group { flex-direction: row; align-items: center; gap: var(--spacing-xs); }
+        .checkbox-group input[type="checkbox"] { width: auto; }
+        .btn-submit { width: 100%; padding: 1rem; font-size: 1.1rem; margin-top: var(--spacing-sm); }
+
+        .footer {
+            background: rgba(10, 10, 10, 0.98); padding: var(--spacing-xl) 0 var(--spacing-md);
+            border-top: 1px solid var(--border-color);
+        }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--spacing-xl); margin-bottom: var(--spacing-lg); }
+        .footer-brand p { color: var(--text-secondary); margin-top: var(--spacing-sm); }
+        .logo-footer { display: flex; flex-direction: column; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { padding: var(--spacing-xs) 0; }
+        .footer-links a { color: var(--text-secondary); }
+        .footer-contact p { margin-bottom: var(--spacing-xs); }
+        .footer-bottom {
+            text-align: center; padding-top: var(--spacing-md);
+            border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-stats { grid-template-columns: 1fr; }
+            .about-content { grid-template-columns: 1fr; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 var(--spacing-sm); }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-main">WgpArch</span>
+                <span class="logo-sub">FORENSIC FILE REPAIR</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="btn-nav">Submit File</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Professional Forensic<br>File Repair & Recovery</h1>
+                <p class="hero-subtitle">Recover your corrupted photos, videos, music & documents using advanced Linux recovery tools</p>
+                <div class="trust-badge">
+                    <span>✓</span>
+                    <span>No Fix, No Fee Guarantee</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Submit File for Analysis</a>
+                    <a href="mailto:wfhmwgp@gmail.com" class="btn btn-secondary">Email Us</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-number">90%+</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24-48h</div>
+                    <div class="stat-label">Turnaround</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">R200</div>
+                    <div class="stat-label">Max Cost</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">What We Repair</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📸</div>
+                    <h3>Photo Repair</h3>
+                    <p>Recover corrupted images that won't open or display properly</p>
+                    <ul class="file-types">
+                        <li>JPEG</li><li>PNG</li><li>WebP</li><li>GIF</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎥</div>
+                    <h3>Video Repair</h3>
+                    <p>Fix videos that freeze, won't play, or have playback errors</p>
+                    <ul class="file-types">
+                        <li>MP4</li><li>AVI</li><li>MKV</li><li>MOV</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎵</div>
+                    <h3>Music Repair</h3>
+                    <p>Restore audio files that skip, crackle, or won't load</p>
+                    <ul class="file-types">
+                        <li>MP3</li><li>WAV</li><li>FLAC</li><li>AAC</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>Document Repair</h3>
+                    <p>Recover documents that show errors or won't open</p>
+                    <ul class="file-types">
+                        <li>PDF</li><li>DOCX</li><li>XLSX</li><li>ODT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Submit Your File</h3>
+                    <p>Fill out the contact form and send your corrupted file via email or upload link</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Analysis</h3>
+                    <p>We analyze your file to determine if it's recoverable (R50 analysis fee)</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Repair & Payment</h3>
+                    <p>If repairable, pay R150 and receive your fixed file. If not, no additional charge</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Receive File</h3>
+                    <p>Small files emailed back, large files sent via Google Drive link</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">Transparent Pricing</h2>
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Per File Repair</h3>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem;">South Africa Only • EFT Payment</p>
+                </div>
+                <div class="pricing-breakdown">
+                    <div class="price-item">
+                        <span class="price-label">Analysis Fee</span>
+                        <span class="price-amount">R50</span>
+                        <span class="price-note">(Non-refundable)</span>
+                    </div>
+                    <div class="price-divider"></div>
+                    <div class="price-item">
+                        <span class="price-label">Repair Fee</span>
+                        <span class="price-amount">R150</span>
+                        <span class="price-note">(Only if successful)</span>
+                    </div>
+                    <div class="price-divider"></div>
+                    <div class="price-item total">
+                        <span class="price-label">Total if Fixed</span>
+                        <span class="price-amount">R200</span>
+                    </div>
+                </div>
+                <div class="guarantee-box">
+                    <span style="font-size: 2rem; color: var(--color-secondary);">★</span>
+                    <div>
+                        <strong>No Fix, No Fee Guarantee</strong>
+                        <p>You only pay the repair fee if we successfully fix your file.</p>
+                    </div>
+                </div>
+                <p style="text-align: center; padding: var(--spacing-sm); color: var(--text-muted); font-style: italic;">Most affordable professional file repair in South Africa</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title">Why Choose WgpArch</h2>
+            <div class="about-content">
+                <div>
+                    <p class="lead">With over a decade of Linux expertise and a background in precision work, I bring technical excellence to file recovery.</p>
+                    <div class="credentials">
+                        <div class="credential">
+                            <span class="credential-icon">🐧</span>
+                            <div>
+                                <strong>Arch Linux Expert Since 2017</strong>
+                                <p>Deep knowledge of Linux recovery tools and forensic techniques</p>
+                            </div>
+                        </div>
+                        <div class="credential">
+                            <span class="credential-icon">💻</span>
+                            <div>
+                                <strong>Advanced Tool Suite</strong>
+                                <p>Using specialized Linux tools that most repair shops don't even know exist</p>
+                            </div>
+                        </div>
+                        <div class="credential">
+                            <span class="credential-icon">🔒</span>
+                            <div>
+                                <strong>Privacy First</strong>
+                                <p>Your files are handled confidentially and permanently deleted after delivery</p>
+                            </div>
+                        </div>
+                        <div class="credential">
+                            <span class="credential-icon">⚡</span>
+                            <div>
+                                <strong>Fast Turnaround</strong>
+                                <p>Analysis results within 24-48 hours during business days</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-stack">
+                    <h3 style="color: var(--color-primary);">Technical Background</h3>
+                    <ul>
+                        <li>Wayland Compositor Developer</li>
+                        <li>Digital Forensics Enthusiast</li>
+                        <li>Python & Shell Scripting</li>
+                        <li>System Administration</li>
+                        <li>Open Source Contributor</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-sm); font-size: 0.9rem;">
+                        View my work: <a href="https://github.com/WgpArch" target="_blank">github.com/WgpArch</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Submit Your File</h2>
+            <div class="contact-wrapper">
+                <div class="form-info">
+                    <h3>Before You Submit</h3>
+                    <ul class="info-list">
+                        <li><strong>Service Area:</strong> South Africa only</li>
+                        <li><strong>Payment:</strong> EFT to GoTyme Bank account</li>
+                        <li>
+                            <strong>File Size:</strong>
+                            <ul class="nested-list">
+                                <li>Under 25MB: Email as attachment</li>
+                                <li>Over 25MB: Use Google Drive, Dropbox, or similar</li>
+                            </ul>
+                        </li>
+                        <li><strong>Turnaround:</strong> 24-48 hours (Mon-Fri)</li>
+                        <li>
+                            <strong>Delivery:</strong>
+                            <ul class="nested-list">
+                                <li>Small files: Email attachment</li>
+                                <li>Large files: Google Drive download link</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="contact-methods">
+                        <h4>Contact Information</h4>
+                        <p>📧 <a href="mailto:wfhmwgp@gmail.com">wfhmwgp@gmail.com</a></p>
+                        <p>🕐 Business Hours: Monday - Friday, 9AM - 5PM SAST</p>
+                        <p>📍 Odendaalsrus, Free State, South Africa</p>
+                    </div>
+                </div>
+                
+                <div class="form-container">
+                    <form action="https://formspree.io/f/xwllwqkl" method="POST" enctype="multipart/form-data" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="file-type">File Type *</label>
+                            <select id="file-type" name="file_type" required>
+                                <option value="">Select file type...</option>
+                                <option value="photo">Photo/Image</option>
+                                <option value="video">Video</option>
+                                <option value="music">Music/Audio</option>
+                                <option value="document">Document</option>
+                                <option value="archive">Archive (ZIP/RAR/7Z)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">What Happened? *</label>
+                            <textarea id="description" name="description" rows="4" required placeholder="Describe the problem..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="file-upload">Upload File (Max 10MB)</label>
+                            <input type="file" id="file-upload" name="attachment" accept=".jpg,.jpeg,.png,.webp,.gif,.mp4,.avi,.mkv,.mov,.mp3,.wav,.flac,.aac,.pdf,.docx,.xlsx,.odt,.zip,.rar,.7z">
+                            <small>For files larger than 10MB, provide a download link below instead</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="download-link">Download Link (for large files)</label>
+                            <input type="url" id="download-link" name="download_link" placeholder="Google Drive, Dropbox, or other sharing link">
+                            <small>If your file is over 10MB, upload it to Google Drive/Dropbox and paste the shareable link here</small>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I understand the R50 non-refundable analysis fee applies *</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-submit">Submit for Analysis</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-footer">
+                        <span class="logo-main">WgpArch</span>
+                        <span class="logo-sub">FORENSIC FILE REPAIR</span>
+                    </div>
+                    <p>Professional file repair service using advanced Linux recovery tools</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Submit File</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📧 <a href="mailto:wfhmwgp@gmail.com">wfhmwgp@gmail.com</a></p>
+                    <p>📍 Odendaalsrus, Free State</p>
+                    <p>🇿🇦 South Africa</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WgpArch Forensic File Repair. All rights reserved.</p>
+                <p>Built with care in South Africa 🇿🇦</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
