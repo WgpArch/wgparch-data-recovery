@@ -470,8 +470,7 @@
                                   <div class="form-container">
                     <h3 style="color: var(--color-primary); margin-bottom: var(--spacing-sm);">Submit Your File for Analysis</h3>
                     <p style="margin-bottom: var(--spacing-md);">Fill out the form below. We'll analyze your file and contact you within 24-48 hours.</p>
-                    
-                    <form id="repair-form" class="contact-form">
+                             <form id="repair-form" class="contact-form">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required placeholder="Your full name">
@@ -499,18 +498,86 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="download-link">File Link (Google Drive/Dropbox)</label>
-                            <input type="url" id="download-link" name="download_link" placeholder="Paste shareable link for files >10MB">
-                            <small>For large files, upload to Google Drive/Dropbox first and paste the link here</small>
+                            <label for="download-link">File Link or Upload</label>
+                            <input type="url" id="download-link" name="download_link" placeholder="Paste Google Drive/Dropbox link OR upload directly below">
+                            <small>For large files, use the uploader below instead of cloud links</small>
                         </div>
-                        
+
+                        <!-- Direct-to-R2 File Uploader -->
+                        <div class="form-group">
+                            <label for="file-input">Upload File Directly (Optional)</label>
+                            <input 
+                                type="file" 
+                                id="file-input" 
+                                accept="*/*" 
+                                style="background: var(--bg-input); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-md); color: var(--text-primary);"
+                            />
+                            <div id="upload-status" style="margin-top: 0.5rem; font-size: 0.875rem;"></div>
+                            <progress 
+                                id="upload-progress" 
+                                value="0" 
+                                max="100" 
+                                style="display: none; width: 100%; height: 6px; margin-top: 0.5rem; border-radius: 3px;"
+                            ></progress>
+                        </div>
+
                         <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
                             Submit for Analysis
                         </button>
                         
                         <div id="form-status" style="margin-top: 1rem; text-align: center; font-weight: 600;"></div>
                     </form>
-                </div>
+
+                    <!-- R2 Direct Upload Handler -->
+                    <script>
+                    const fileInput = document.getElementById('file-input');
+                    const uploadStatus = document.getElementById('upload-status');
+                    const uploadProgress = document.getElementById('upload-progress');
+                    const downloadLinkField = document.getElementById('download-link');
+
+                    if (fileInput) {
+                        fileInput.addEventListener('change', async (e) => {
+                            const file = e.target.files[0];
+                            if (!file) return;
+
+                            uploadStatus.textContent = '⏳ Getting upload link...';
+                            uploadStatus.style.color = 'var(--color-primary)';
+
+                            try {
+                                const resp = await fetch('https://wgparch-r2-uploader.wgparch.workers.dev', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ filename: file.name, contentType: file.type })
+                                });
+
+                                if (!resp.ok) throw new Error('Failed to get upload link');
+
+                                const { uploadUrl, key } = await resp.json();
+
+                                uploadProgress.style.display = 'block';
+                                uploadProgress.value = 0;
+
+                                const uploadResp = await fetch(uploadUrl, {
+                                    method: 'PUT',
+                                    body: file,
+                                    headers: { 'Content-Type': file.type }
+                                });
+
+                                if (!uploadResp.ok) throw new Error('Upload failed');
+
+                                downloadLinkField.value = `https://${key}`;
+
+                                uploadStatus.textContent = `✅ Uploaded: ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} MB)`;
+                                uploadStatus.style.color = 'var(--color-secondary)';
+                            } catch (err) {
+                                uploadStatus.textContent = '❌ Upload failed. Try again or use cloud link.';
+                                uploadStatus.style.color = '#e74c3c';
+                            } finally {
+                                uploadProgress.style.display = 'none';
+                            }
+                        });
+                    }
+                    </script>
 
                 <script>
                 document.getElementById('repair-form').addEventListener('submit', async function(e) {

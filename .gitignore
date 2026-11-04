@@ -1,1 +1,10 @@
-site/
+# Node modules (if you ever add frontend build tools)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor backups
+*~
+*.swp

@@ -39,3 +39,29 @@ Professional forensic file repair using advanced Linux recovery tools that most 
 **[https://wgparch.github.io/wgparch-data-recovery/](https://wgparch.github.io/wgparch-data-recovery/)**
 
 Submit your corrupted file for professional analysis and repair.
+
+---
+
+## 🔧 Technical Implementation: R2 File Upload System
+
+### Architecture
+- **Frontend**: Direct browser upload via presigned URLs (no server relay)
+- **Backend**: Cloudflare Worker (`wgparch-r2-uploader`) generates SigV4-signed PUT URLs
+- **Storage**: Cloudflare R2 bucket `wgparch-uploads` (10GB free tier, $0 egress)
+- **Integration**: Uploaded file URL auto-fills Brevo form field → parsed by email watcher → stored in GTK tracker DB
+
+### Security Model
+- R2 credentials stored **only** in `~/.config/wgparch-data-recovery/config.yaml` (never committed to Git)
+- Wrangler secrets encrypted at edge; never exposed to browser or logs
+- Presigned URLs expire after 1 hour; scoped to specific upload key
+- CORS restricted to authorized origins only
+
+### Local Development
+```bash
+# Test site locally
+cd ~/.dotfiles/wgparch-data-recovery
+python3 -m http.server 8080
+
+# Update Worker (requires Wrangler auth + secrets)
+cd ~/.config/projects/wgparch-r2-worker
+wrangler deploy
