@@ -450,7 +450,6 @@
                                 <li>Large files: Upload to Google Drive/Dropbox & paste link in form</li>
                             </ul>
                         </li>
-                        </li>
                         <li><strong>Turnaround:</strong> 24-48 hours (Mon-Fri)</li>
                         <li>
                             <strong>Delivery:</strong>
@@ -458,7 +457,6 @@
                                 <li>Small files: Email attachment</li>
                                 <li>Large files: Google Drive download link</li>
                             </ul>
-                        </li>
                     </ul>
                     <div class="contact-methods">
                         <h4>Contact Information</h4>
@@ -568,7 +566,7 @@
 
                                 const accountId = '58814bc6598432850f62b0fb7c0ec63c';
                                 const bucketName = 'wgparch-uploads';
-                                downloadLinkField.value = data.downloadUrl;
+                                downloadLinkField.value = `https://pub-26d42eb74bc7440689acbdb1a0616b17.r2.dev/${key}`;
 
                                 uploadStatus.textContent = `✅ Uploaded: ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} MB)`;
                                 uploadStatus.style.color = 'var(--color-secondary)';
