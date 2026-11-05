@@ -126,13 +126,6 @@ class TrackerWindow(Adw.ApplicationWindow):
         )
         row = cursor.fetchone()
         link = row[0] if row else ""
-        valid_domains = ["r2.dev", "drive.google.com", "dropbox.com"]
-        if link and any(d in link for d in valid_domains):
-            dl_btn.set_sensitive(True)
-            dl_btn.connect("clicked", lambda b, l=link: self._open_link(l))
-        else:
-            dl_btn.set_sensitive(False)
-            dl_btn.set_tooltip_text("No valid download link")
         dl_btn.set_size_request(36, 36)
         box.append(dl_btn)
 
