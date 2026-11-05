@@ -25,6 +25,15 @@
             --spacing-xl: 4rem;
             --radius-md: 8px;
             --radius-lg: 12px;
+           }
+          
+           * Force dark theme on dropdowns and inputs */
+           select, option, input, textarea {
+           background-color: #0d0d0d !important;
+           color: #ffffff !important;
+           border: 1px solid #333 !important;
+     }
+    </style>
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -567,7 +576,7 @@
 
                                 const accountId = '58814bc6598432850f62b0fb7c0ec63c';
                                 const bucketName = 'wgparch-uploads';
-                                downloadLinkField.value = `https://${accountId}.r2.cloudflarestorage.com/${bucketName}/${key}`;
+                                downloadLinkField.value = data.downloadUrl;
 
                                 uploadStatus.textContent = `✅ Uploaded: ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} MB)`;
                                 uploadStatus.style.color = 'var(--color-secondary)';
