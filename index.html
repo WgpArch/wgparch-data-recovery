@@ -565,7 +565,9 @@
 
                                 if (!uploadResp.ok) throw new Error('Upload failed');
 
-                                downloadLinkField.value = `https://${key}`;
+                                const accountId = '58814bc6598432850f62b0fb7c0ec63c';
+                                const bucketName = 'wgparch-uploads';
+                                downloadLinkField.value = `https://${accountId}.r2.cloudflarestorage.com/${bucketName}/${key}`;
 
                                 uploadStatus.textContent = `✅ Uploaded: ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} MB)`;
                                 uploadStatus.style.color = 'var(--color-secondary)';
