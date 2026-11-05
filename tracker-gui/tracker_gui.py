@@ -119,6 +119,20 @@ class TrackerWindow(Adw.ApplicationWindow):
         # ✅ NEW: Download Button
         dl_btn = Gtk.Button.new_from_icon_name("document-open-symbolic")
         dl_btn.set_tooltip_text("Open Download Link")
+        # Validate R2 and cloud links before enabling button
+        cursor = self.conn.execute(
+            "SELECT download_link FROM jobs WHERE reference_number = ?", 
+            (job.reference_number,)
+        )
+        row = cursor.fetchone()
+        link = row[0] if row else ""
+        valid_domains = ["r2.dev", "drive.google.com", "dropbox.com"]
+        if link and any(d in link for d in valid_domains):
+            dl_btn.set_sensitive(True)
+            dl_btn.connect("clicked", lambda b, l=link: self._open_link(l))
+        else:
+            dl_btn.set_sensitive(False)
+            dl_btn.set_tooltip_text("No valid download link")
         dl_btn.set_size_request(36, 36)
         box.append(dl_btn)
 
